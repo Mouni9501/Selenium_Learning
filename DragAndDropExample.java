@@ -9,16 +9,23 @@ public class DragAndDropExample
     public static void main(String args[]) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-nodes-quiz/drag-drop-nodes-quiz.html");
+        driver.get("https://jqueryui.com/droppable/");
+        driver.switchTo().frame(driver.findElement(By.cssSelector(".demo-frame")));
 
-       WebElement source = driver.findElement(By.id("node5"));
+       WebElement source = driver.findElement(By.id("draggable"));
         System.out.println(source.getText());
-       WebElement target = driver.findElement(By.id("box4"));
+       WebElement target = driver.findElement(By.id("droppable"));
+        System.out.println(target.getText());
         Actions actions = new Actions(driver);
-        actions.clickAndHold(source).moveToElement(target).release().build().perform();
-      // actions.dragAndDrop(source,target).build().perform();
+
+
+       // actions.dragAndDrop(source,target).perform();
+
+       actions.clickAndHold(source).moveToElement(target).release().perform();
+       // actions.dragAndDrop(source,target).perform();
+      //actions.dragAndDrop()
        Thread.sleep(3000);
-       driver.close();
+     driver.close();
 
     }
 }
