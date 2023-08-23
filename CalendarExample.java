@@ -17,14 +17,14 @@ public class CalendarExample
         driver.findElement(By.xpath("//label[@for='departure']")).click();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollTo(0,200)");
-        List<WebElement> dates = driver.findElements(By.xpath("//div[@class='DayPicker-Day']"));
+        List<WebElement> dates = driver.findElements(By.xpath("//div[contains(@class, 'DayPicker-Day') and @aria-disabled='false']"));
         for(int i=0;i< dates.size();i++)
         {
-            String requiredDate = driver.findElements(By.xpath("//div[@class='DayPicker-Day']")).get(i).getText();
+            String requiredDate = driver.findElements(By.xpath("//div[contains(@class, 'DayPicker-Day') and @aria-disabled='false']")).get(i).getText();
             System.out.println(requiredDate);
-            if(requiredDate.equalsIgnoreCase("28"))
+            if(requiredDate.contains("28"))
             {
-                driver.findElements(By.xpath("//div[@class='DayPicker-Day']")).get(i).click();
+                driver.findElements(By.xpath("//div[contains(@class, 'DayPicker-Day') and @aria-disabled='false']")).get(i).click();
                 Thread.sleep(3000);
                 System.out.println("Date got clicked");
                 break;

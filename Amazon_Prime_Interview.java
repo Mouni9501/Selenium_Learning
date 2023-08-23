@@ -10,6 +10,7 @@ public class Amazon_Prime_Interview
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.amazon.com/amazonprime?ref_=nav_cs_primelink_nonmember");
         driver.manage().window().maximize();
+
         Actions actions = new Actions(driver);
         actions.moveToElement(driver.findElement(By.xpath("//a[@id=\"nav-link-amazonprime\"]"))).build().perform();
         String result = driver.findElement(By.cssSelector(".pin-nav-content-img .pin-nav-content-copy")).getText();
